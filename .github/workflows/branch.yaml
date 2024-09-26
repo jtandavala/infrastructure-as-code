@@ -29,5 +29,7 @@ jobs:
           chmod 400 iac.pem  # Set correct permissions
 
       - name: Run Ansible Playbook
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: "False"  # Disable host key checking
         run: |
           ansible-playbook -i playbook/hosts.ini playbook/playbook.yml --private-key iac.pem

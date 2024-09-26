@@ -1,16 +1,35 @@
-image: python:3.9  
+# image: python:3.9  
 
-variables:
-  ANSIBLE_HOST_KEY_CHECKING: "False"  
-  ANSIBLE_PRIVATE_KEY_FILE: "$ANSIBLE_PRIVATE_KEY"  
+# variables:
+#   ANSIBLE_HOST_KEY_CHECKING: "False"  
+#   ANSIBLE_PRIVATE_KEY_FILE: "$ANSIBLE_PRIVATE_KEY"  
+
+# stages:
+#   - deploy
+
+# deploy:
+#   stage: deploy
+#   script:
+#     - apt-get update && apt-get install -y ansible  
+#     - ansible-playbook -i playbook/hosts.ini playbook/playbook.yml --private-key $ANSIBLE_PRIVATE_KEY_FILE
+#   only:
+#     - main 
+
+
+image: python:3.9  # Choose an appropriate image
 
 stages:
   - deploy
 
 deploy:
   stage: deploy
-  script:
-    - apt-get update && apt-get install -y ansible  
-    - ansible-playbook -i playbook/hosts.ini playbook/playbook.yml --private-key $ANSIBLE_PRIVATE_KEY_FILE
+  tags:
+    - ansible  # Ensure this matches the runner tags
   only:
-    - main 
+    - main
+  script:
+    - apt-get update && apt-get install -y ansible
+    - echo "$ANSIBLE_PRIVATE_KEY" > iac.pem
+    - chmod 400 /path/to/iac.pem  # Set the correct permissions
+    - ansible-playbook -i playbook/hosts.ini playbook/playbook.yml --private-key iac.pem
+

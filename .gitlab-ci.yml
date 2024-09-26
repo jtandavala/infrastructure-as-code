@@ -1,0 +1,16 @@
+image: python:3.9  
+
+variables:
+  ANSIBLE_HOST_KEY_CHECKING: "False"  
+  ANSIBLE_PRIVATE_KEY_FILE: "$ANSIBLE_PRIVATE_KEY"  
+
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  script:
+    - apt-get update && apt-get install -y ansible  
+    - ansible-playbook -i playbook/hosts.ini playbook/playbook.yml --private-key $ANSIBLE_PRIVATE_KEY_FILE
+  only:
+    - main 

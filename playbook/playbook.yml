@@ -1,0 +1,15 @@
+---
+- name: Deploy backend
+  hosts: qas
+  become: true
+  connection: ssh
+
+  
+
+  tasks:
+    - name: Ping the instance
+      ping:
+
+
+
+

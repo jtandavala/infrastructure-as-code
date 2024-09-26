@@ -1,0 +1,33 @@
+name: Ansible Deploy
+
+on:
+  push:
+    branches:
+      - main  # Run on push to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2  # Check out your code
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'  # Specify the Python version
+
+      - name: Install Ansible
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ansible
+
+      - name: Set up SSH key
+        run: |
+          echo "${{ secrets.ANSIBLE_PRIVATE_KEY }}" > iac.pem  # Use GitHub Secrets
+          chmod 400 iac.pem  # Set correct permissions
+
+      - name: Run Ansible Playbook
+        run: |
+          ansible-playbook -i playbook/hosts.ini playbook/playbook.yml --private-key iac.pem

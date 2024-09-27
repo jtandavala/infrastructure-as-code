@@ -21,6 +21,6 @@
 
 
 - name: shutdown current version
-  shell: docker compose up -d
+  shell: docker compose up -d --build
   args:
     chdir: "{{ project_path }}/webapp" 

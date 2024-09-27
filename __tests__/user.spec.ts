@@ -12,7 +12,6 @@ describe("Users CRUD API", () => {
     });
     expect(res.statusCode).toEqual(201);
     expect(res.body).toHaveProperty("id");
-    expect(1).toBe(3);
     userId = res.body.id;
   });
 

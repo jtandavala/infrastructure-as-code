@@ -1,15 +1,18 @@
 ---
 
-- name: baixar o unig4construction do gitlab
+- name: clone the project
 
   git:  
-
     repo: "https://github.com/tandavala-py/iac.git"
-
     dest: "{{ project_path }}/webapp"
-
     update: yes
-
     force: yes
-
     version: main
+
+- name: give the right privileges
+
+  shell: sudo chown -R $USER:$USER webapp
+
+  args:
+
+    chdir: "{{ project_path }}"

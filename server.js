@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 app.use("/users", usersRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Hello World! atualizado");
+  res.status(200).json({ ping: "pong (atualizado)" });
 });
 
 module.exports = app;

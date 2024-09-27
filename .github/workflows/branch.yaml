@@ -3,14 +3,14 @@ name: Ansible Deploy
 on:
   push:
     branches:
-      - main  # Run on push to the main branch
+      - main  
 
 jobs:
   test:
     strategy:
       fail-fast: false
       matrix:
-        node-version: ['16.x']  # Specify the Node.js versions to test
+        node-version: ['16.x'] 
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
@@ -22,7 +22,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install dependencies
-        run: npm install  # You can switch to `yarn install` if using Yarn
+        run: npm install 
 
       - name: Run tests with Jest
         run: npm run test -- --coverage --ci --testResultsProcessor jest-junit
@@ -41,16 +41,16 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
 
   deploy:
-    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+    runs-on: ubuntu-latest  
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2  # Check out your code
+        uses: actions/checkout@v2 
 
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'  # Specify the Python version
+          python-version: '3.9'  
 
       - name: Install Ansible
         run: |
@@ -64,6 +64,6 @@ jobs:
 
       - name: Run Ansible Playbook
         env:
-          ANSIBLE_HOST_KEY_CHECKING: "False"  # Disable host key checking
+          ANSIBLE_HOST_KEY_CHECKING: "False" 
         run: |
           ansible-playbook -i playbook/hosts.ini playbook/playbook.yml --private-key iac.pem

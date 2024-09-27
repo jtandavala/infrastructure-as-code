@@ -1,6 +1,7 @@
 
 FROM node:14-alpine as base
 
+RUN apk add --no-cache bash
 
 WORKDIR /src
 
@@ -23,6 +24,7 @@ EXPOSE 3000
 FROM base as dev
 ENV NODE_ENV=development
 
+RUN apk add --no-cache bash
 
 RUN npm install -g nodemon
 
@@ -32,7 +34,7 @@ RUN chown -R node:node /src
 USER node
 
 
-CMD ["nodemon", "server.js"]
+CMD ["nodemon", "start.js"]
 
 
 FROM base as production

@@ -4,9 +4,11 @@
   become: true
   connection: ssh
 
-  tasks:
-    - name: Ping the instance
-      ping:
+  vars_files:
+    - vars/main.yml
+
+  roles:
+    - deploy-api
 
 
 

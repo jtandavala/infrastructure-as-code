@@ -1,2 +1,15 @@
 ---
-# tasks file for roles/deploy-api
+
+- name: baixar o unig4construction do gitlab
+
+  git:  
+
+    repo: "https://github.com/tandavala-py/iac.git"
+
+    dest: "{{ project_path }}/webapp"
+
+    update: yes
+
+    force: yes
+
+    version: main

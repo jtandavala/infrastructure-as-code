@@ -1,0 +1,11 @@
+# USER
+ 
+# Gitlab
+
+gitlabuser: tandavala-py
+gitlabpass: ""
+
+
+# paths
+
+project_path: /opt/insfra-as-code

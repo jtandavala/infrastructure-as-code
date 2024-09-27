@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="6" failures="0" errors="0" time="0.509">
+  <testsuite name="Users CRUD API" errors="0" failures="0" skipped="0" timestamp="2024-09-27T09:18:37" time="0.341" tests="6">
+    <testcase classname="Users CRUD API should create a new user" name="Users CRUD API should create a new user" time="0.029">
+    </testcase>
+    <testcase classname="Users CRUD API should get all users" name="Users CRUD API should get all users" time="0.002">
+    </testcase>
+    <testcase classname="Users CRUD API should get a user by ID" name="Users CRUD API should get a user by ID" time="0.001">
+    </testcase>
+    <testcase classname="Users CRUD API should update a user" name="Users CRUD API should update a user" time="0.002">
+    </testcase>
+    <testcase classname="Users CRUD API should delete a user" name="Users CRUD API should delete a user" time="0.002">
+    </testcase>
+    <testcase classname="Users CRUD API should return 404 for non-existing user" name="Users CRUD API should return 404 for non-existing user" time="0.001">
+    </testcase>
+  </testsuite>
+</testsuites>

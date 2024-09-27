@@ -6,6 +6,40 @@ on:
       - main  # Run on push to the main branch
 
 jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: ['16.x']  # Specify the Node.js versions to test
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm install  # You can switch to `yarn install` if using Yarn
+
+      - name: Run tests with Jest
+        run: npm run test -- --coverage --ci --testResultsProcessor jest-junit
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          verbose: true
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
   deploy:
     runs-on: ubuntu-latest  # Use the latest Ubuntu runner
 
@@ -26,7 +60,7 @@ jobs:
       - name: Set up SSH key
         run: |
           echo "${{ secrets.ANSIBLE_PRIVATE_KEY }}" > iac.pem  # Use GitHub Secrets
-          chmod 400 iac.pem  # Set correct permissions
+          chmod 400 iac.pem  
 
       - name: Run Ansible Playbook
         env:

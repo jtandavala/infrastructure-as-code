@@ -8,7 +8,4 @@ services:
       - .:/src
 
     ports:
-      - "3000:3000"
-    environment:
-      NODE_ENV: development
-      DEBUG: nodejs-docker-express:*
+      - "3001:3001"

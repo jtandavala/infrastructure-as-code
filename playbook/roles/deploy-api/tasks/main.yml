@@ -10,9 +10,17 @@
     version: main
 
 - name: give the right privileges
-
   shell: sudo chown -R $USER:$USER webapp
-
   args:
-
     chdir: "{{ project_path }}"
+
+- name: shutdown current version
+  shell: docker compose down 
+  args:
+    chdir: "{{ project_path }}/webapp" 
+
+
+- name: shutdown current version
+  shell: docker compose up -d
+  args:
+    chdir: "{{ project_path }}/webapp" 

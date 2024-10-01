@@ -12,13 +12,16 @@ This repository contains the source code for the internal workshop held at [ITGe
 - **Ansible**: A configuration management and automation tool that simplifies the provisioning and management of infrastructure.
 - **GitHub Actions**: CI/CD tool used to automate workflows, testing, and deployment directly from the GitHub repository.
 - **Codecov**: A platform for measuring code coverage, integrated to ensure the quality of the code by tracking test coverage statistics.
-- **AWS S3**: Amazon Simple Storage Service, used for storing and managing data in the cloud as part of the infrastructure solution.
+- **AWS EC2**: Amazon Elastic Compute Cloud (EC2), a scalable virtual server platform that provides resizable compute capacity in the cloud, used for deploying and managing infrastructure.
+
 
 ### Workshop Overview:
 
-The workshop was designed to introduce participants to the concept of Infrastructure as Code (IaC) and how it can be applied using modern tools and cloud platforms. By leveraging **Ansible** for provisioning, **Docker** for containerization, and **AWS S3** for cloud storage, participants learned how to automate the setup and management of infrastructure in a repeatable, scalable, and reliable way. Additionally, the session covered best practices for testing, continuous integration, and deployment pipelines using **Jest**, **GitHub Actions**, and **Codecov**.
+The purpose of this workshop was to provide a hands-on introduction to Infrastructure as Code (IaC), showcasing how modern tools and cloud platforms can be combined to automate and manage infrastructure. The session covered the entire lifecycle, from writing and testing code with Node.js and Jest, to containerizing applications with Docker, to automating infrastructure provisioning using Ansible, all while leveraging cloud computing with AWS EC2.
 
-This repository serves as a learning resource, providing hands-on examples and project files to help participants explore these tools and practices in real-world scenarios.
+Participants also explored the creation of continuous integration and deployment pipelines using GitHub Actions and how to monitor code quality with Codecov. These technologies enable teams to efficiently manage infrastructure in a repeatable, consistent, and scalable way.
+
+This repository is intended as a learning resource, containing practical examples and configurations that showcase best practices in Infrastructure as Code, continuous delivery, and cloud automation.
 
 ---
 

@@ -3,7 +3,7 @@
 - name: clone the project
 
   git:  
-    repo: "https://github.com/tandavala-py/iac.git"
+    repo: "https://github.com/jtandavala/infrastructure-as-code.git"
     dest: "{{ project_path }}/webapp"
     update: yes
     force: yes
